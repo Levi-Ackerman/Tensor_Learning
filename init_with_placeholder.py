@@ -3,15 +3,15 @@
 
 import tensorflow as tf
 
-x = tf.placeholder(float, [1, 2])
+x = tf.placeholder(float, [None, 2])
 
-w1 = tf.Variable(tf.random_normal([2, 3]))
-w2 = tf.Variable(tf.random_normal([3, 1]))
+w1 = tf.Variable(tf.random_normal([2, 1]))
 
-a = tf.matmul(x, w1)
-out = tf.matmul(a, w2)
+out = tf.matmul(x, w1)
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    result = sess.run(out, {x: [[0.4, 0.3]]})
+    result = sess.run(out, {x: [[0.4, 0.3], [0.8, 0.6]]})
     print("placeholder result is :", result)
+
+    print("w1 is ", sess.run(w1))
