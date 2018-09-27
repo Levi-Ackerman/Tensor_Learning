@@ -27,3 +27,7 @@ with tf.Session() as sess:
     # 生成权重参数
     w = tf.Variable(a)
     print(w)
+
+se = tf.InteractiveSession()
+print(a.eval())
+se.close()
